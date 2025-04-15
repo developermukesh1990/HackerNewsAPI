@@ -40,7 +40,7 @@ namespace HackerNewsAPI.Controllers
 
                     var tasks = bestIds.Select(GetStoryAsync);
                     stories = (await Task.WhenAll(tasks)).ToList();
-                    var d = stories.Where(x => x.Url == null || x.Url == "");
+                   
                     if (!String.IsNullOrEmpty(search))
                     {
                         var searchItem = search.ToLower();
