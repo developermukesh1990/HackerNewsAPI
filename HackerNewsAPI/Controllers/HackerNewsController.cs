@@ -21,62 +21,25 @@ namespace HackerNewsAPI.Controllers
         }
 
         /// <summary>
-        /// Get best stories
+        /// Getting top best stories
         /// </summary>
-        /// <returns> Best stories .</returns>
+        /// <returns> returns best stories in response</returns>
        
-        [HttpGet("Index")]
-        public async Task<IActionResult> Index(string? search = "")
+        [HttpGet("TopNews")]
+        public async Task<IActionResult> TopNews()
         {
             try
             {
-                List<HackerNewsStory> stories = new List<HackerNewsStory>();
-
                 var response = await _hackerNewsService.BestStoriesAsync();
-                if (response.IsSuccessStatusCode)
-                {
-                    var storiesResponse = response.Content.ReadAsStringAsync().Result;
-                    var bestIds = JsonConvert.DeserializeObject<List<int>>(storiesResponse);
-
-                    var tasks = bestIds.Select(GetStoryAsync);
-                    stories = (await Task.WhenAll(tasks)).ToList();
-                   
-                    if (!String.IsNullOrEmpty(search))
-                    {
-                        var searchItem = search.ToLower();
-                        stories = stories.Where(x =>
-                                                x.Title.ToLower().IndexOf(searchItem) > -1 || x.By.ToLower().IndexOf(searchItem) > -1)
-                                           .ToList();
-
-                    }
-                }
-                return Ok(stories);
+                return Ok(response);
 
             }
             catch (Exception ex)
             {
-                return BadRequest("unable to process the request");
-                
+                return StatusCode(500, new { message = $"An error occurred while retrieving top news stories", error = ex.Message });
+
             }
             
-        }
-
-        private async Task<HackerNewsStory> GetStoryAsync(int storyId)
-        {
-            return await _cache.GetOrCreateAsync<HackerNewsStory>(storyId,
-                async cacheEntry =>
-                {
-                    HackerNewsStory story = new HackerNewsStory();
-
-                    var response = await _hackerNewsService.GetStoryByIdAsync(storyId);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var storyResponse = response.Content.ReadAsStringAsync().Result;
-                        story = JsonConvert.DeserializeObject<HackerNewsStory>(storyResponse);
-                    }
-
-                    return story;
-                });
         }
 
     }

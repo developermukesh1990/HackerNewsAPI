@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI", "HackerNewsAPI\HackerNewsAPI.csproj", "{C6A02BEA-B268-41BF-874D-FF9F7E57D716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackerNewsAPI", "HackerNewsAPI\HackerNewsAPI.csproj", "{C6A02BEA-B268-41BF-874D-FF9F7E57D716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.Service", "HackerNewsAPI.Service\HackerNewsAPI.Service.csproj", "{8D1FD589-5164-44ED-96A6-89C7309234B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackerNewsAPI.Service", "HackerNewsAPI.Service\HackerNewsAPI.Service.csproj", "{8D1FD589-5164-44ED-96A6-89C7309234B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.DTO", "HackerNewsAPI.DTO\HackerNewsAPI.DTO.csproj", "{4784D58B-07B1-474E-9713-148770AA8971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackerNewsAPI.DTO", "HackerNewsAPI.DTO\HackerNewsAPI.DTO.csproj", "{4784D58B-07B1-474E-9713-148770AA8971}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
